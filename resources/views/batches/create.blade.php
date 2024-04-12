@@ -1,10 +1,10 @@
 @extends('layout')
-@section('title', 'Create a new course')
+@section('title', 'Create a New Batch')
 @section('content')
     <div class="container">
 
     <div class="card mt-5">
-        <div class="card-header">Batches</div>
+        <div class="card-header">Batch Create Page</div>
         <div class="card-body">
             <form class="form-horizontal" action="{{route('storebatches')}}" method="POST">
             @csrf

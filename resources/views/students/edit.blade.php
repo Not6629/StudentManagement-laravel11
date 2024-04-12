@@ -1,9 +1,9 @@
 @extends('layout')
-@section('title', 'Create a new student')
+@section('title', 'Edit Student')
 @section('content')
     <div class="container">
         <div class="card mt-5">
-            <div class="card-header">Student page</div>
+            <div class="card-header">Student Edit Page</div>
             <div class="card-body">
                 <form class="form-horizontal" action="{{route('updatestudents',$student->id)}}" method="POST">
                     @csrf

@@ -5,6 +5,7 @@ use App\Http\Controllers\StudentController;
 use App\Http\Controllers\TeacherController;
 use App\Http\Controllers\CourseController;
 use App\Http\Controllers\BatchController;
+use App\Http\Controllers\EnrollmentController;
 
 Route::get('/',[StudentController::class,'index'])->name('indexstudents');
 Route::get('/newstudents',[StudentController::class,'create'])->name('createstudents');
@@ -37,3 +38,11 @@ Route::get('/showbatch/{id}',[BatchController::class,'show'])->name('showbatches
 Route::get('/editbatch/{id}',[BatchController::class,'edit'])->name('editbatches');
 Route::post('/updatebatch/{id}',[BatchController::class,'update'])->name('updatebatches');
 Route::get('/deletebatch/{id}',[BatchController::class,'destroy'])->name('deletebatches');
+
+Route::get('/enrollments',[EnrollmentController::class,'index'])->name('indexenrollments');
+Route::get('/newenrollments',[EnrollmentController::class,'create'])->name('createenrollments');
+Route::post('/new.enrollments',[EnrollmentController::class,'store'])->name('storeenrollments');
+Route::get('/showenrollment/{id}',[EnrollmentController::class,'show'])->name('showenrollments');
+Route::get('/editenrollment/{id}',[EnrollmentController::class,'edit'])->name('editenrollments');
+Route::post('/updateenrollment/{id}',[EnrollmentController::class,'update'])->name('updateenrollments');
+Route::get('/deleteenrollment/{id}',[EnrollmentController::class,'destroy'])->name('deleteenrollments');

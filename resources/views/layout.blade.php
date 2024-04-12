@@ -38,7 +38,7 @@ a:active {
                     <a href="{{route('indexteachers')}}" class="w3-bar-item w3-button">Teacher</a>
                     <a href="{{route('indexcourses')}}" class="w3-bar-item w3-button">Courses</a>
                     <a href="{{route('indexbatches')}}" class="w3-bar-item w3-button">Batches</a>
-                    <a href="#" class="w3-bar-item w3-button">Enrollment</a>
+                    <a href="{{route('indexenrollments')}}" class="w3-bar-item w3-button">Enrollment</a>
                     <a href="#" class="w3-bar-item w3-button">Payment</a>
                 </div>
             </div>

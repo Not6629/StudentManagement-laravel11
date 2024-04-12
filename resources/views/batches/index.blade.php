@@ -1,12 +1,12 @@
 @extends('layout')
-@section('title', 'Home page')
+@section('title', 'Batches Home page')
 @section('content')
     <div class="container">
         <div class="row">
             <div class="col-md-9">
                 <div class="card mt-5">
                     <div class="card-header">
-                        <h2>Batches</h2>
+                        <h2>Batches Application</h2>
                     </div>
                     <div class="card-body">
                         <a href="{{route('createbatches')}}" class="btn btn-success btn-sm" title="Add new Batch">

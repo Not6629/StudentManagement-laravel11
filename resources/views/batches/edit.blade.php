@@ -1,9 +1,9 @@
 @extends('layout')
-@section('title', 'Create a new Batch')
+@section('title', 'Edit Batch')
 @section('content')
     <div class="container">
         <div class="card mt-5">
-            <div class="card-header">Batch page</div>
+            <div class="card-header">Batch Edit page</div>
             <div class="card-body">
                 <form class="form-horizontal" action="{{route('updateBatches',$batch->id)}}" method="POST">
                     @csrf

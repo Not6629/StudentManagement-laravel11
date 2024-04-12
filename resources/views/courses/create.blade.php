@@ -1,10 +1,10 @@
 @extends('layout')
-@section('title', 'Create a new course')
+@section('title', 'Create a New Course')
 @section('content')
     <div class="container">
 
     <div class="card mt-5">
-        <div class="card-header">Course page</div>
+        <div class="card-header">Course Create Page</div>
         <div class="card-body">
             <form class="form-horizontal" action="{{route('storecourses')}}" method="POST">
             @csrf

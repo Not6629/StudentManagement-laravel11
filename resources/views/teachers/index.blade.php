@@ -1,12 +1,12 @@
 @extends('layout')
-@section('title', 'Home page')
+@section('title', 'Teachers Home page')
 @section('content')
     <div class="container">
         <div class="row">
             <div class="col-md-9">
                 <div class="card mt-5">
                     <div class="card-header">
-                        <h2>Teacher Application</h2>
+                        <h2>Teachers Application</h2>
                     </div>
                     <div class="card-body">
                         <a href="{{route('createteachers')}}" class="btn btn-success btn-sm" title="Add new teacher">
