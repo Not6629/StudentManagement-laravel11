@@ -22,7 +22,7 @@
                 <span class="text-danger">{{$message}}</span>
             </div>
             @enderror
-            <label for="duration">Duration</label>
+            <label for="duration">Duration (in weeks)</label>
             <input type="text" name="duration" class="form-control mt-1">
             @error('duration')
             <div class="alert alert-danger mt-2 mb-0">

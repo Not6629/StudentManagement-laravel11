@@ -15,7 +15,7 @@
                         </div>
                     @enderror
                     <label for="syllabus">Syllabus</label>
-                    <input type="text" name="Syllabus" class="form-control mt-1" value="{{$course->syllabus}}">
+                    <input type="text" name="syllabus" class="form-control mt-1" value="{{$course->syllabus}}">
                     @error('syllabus')
                         <div class="alert alert-danger mt-2 mb-0">
                             <span class="text-danger">{{ $message }}</span>

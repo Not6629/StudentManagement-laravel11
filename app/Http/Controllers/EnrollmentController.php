@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 use App\Models\Enrollment;
+use App\Models\Student;
+use App\Models\Batch;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Response;
 use Illuminate\Http\Request;
@@ -21,7 +23,9 @@ class EnrollmentController extends Controller
      */
     public function create():View
     {
-        return view('enrollments.create');
+        $students = Student::pluck('name', 'id');
+        $batches = Batch::pluck('name', 'id');
+        return view('enrollments.create',compact('students', 'batches'));
     }
 
     /**
@@ -29,20 +33,6 @@ class EnrollmentController extends Controller
      */
     public function store(Request $request)
     {
-        // $request->validate([
-        //     'enroll_no'=>'required',
-        //     'batch_id'=>'required',
-        //     'student_id'=>'required',
-        //     'join_date'=>'required',
-        //     'fee'=>'required'
-        // ],
-        // [
-        //     'enroll_no.required' => 'กรุณากรอกชื่อคอร์ส',
-        //     'batch_id.required' => 'กรุณากรอกเนื้อหาคอร์ส',
-        //     'student_id.required' => 'กรุณากรอกระยะเวลาการสอน',
-        //     'join_date.required' => 'กรุณากรอกวันที่เข้าร่วม',
-        //     'fee.required' => 'กรุณากรอกค่าธรรมเนียมคอร์ส'
-        // ]);
         $validRequest = [
             'enroll_no' => $request->enroll_no,
             'batch_id' => $request->batch_id,
@@ -69,7 +59,9 @@ class EnrollmentController extends Controller
     public function edit(string $id)
     {
         $enrollment = Enrollment::find($id);
-        return view('Enrollments.edit')->with('Enrollment', $enrollment);
+        $batches = Batch::pluck('name', 'id');
+        $students = Student::pluck('name', 'id');
+        return view('Enrollments.edit',compact('enrollment','batches','students'));
     }
 
     /**
@@ -98,7 +90,7 @@ class EnrollmentController extends Controller
             'join_date' => $request->join_date,
             'fee' => $request->fee
         ];
-        Enrollment::create($validRequest);
+        Enrollment::where('id',$id)->update($validRequest);
         return redirect('/enrollments');
     }
 

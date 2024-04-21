@@ -29,7 +29,7 @@
                                             <td>{{$loop->iteration}}</td>
                                             <td>{{$item->name}}</td>
                                             <td>{{$item->syllabus}}</td>
-                                            <td>{{$item->duration}}</td>
+                                            <td>{{$item->duration()}}</td>
                                             <td><a href="{{route('showcourses',$item->id)}}"class="btn btn-primary">View</a></td>
                                             <td><a href="{{route('editcourses',$item->id)}}"class="btn btn-warning">Edit</a></td>
                                             <td><a href="{{route('deletecourses',$item->id)}}"class="btn btn-danger" onclick="return confirm('Confirm to delete {{$item->name}}?')">Delete</a></td>

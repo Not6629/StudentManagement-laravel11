@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 use App\Models\Batch;
+use App\Models\Course;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Response;
 use Illuminate\Http\Request;
@@ -24,7 +25,8 @@ class BatchController extends Controller
      */
     public function create():View
     {
-        return view('batches.create');
+        $courses = Course::pluck('name', 'id');
+        return view('batches.create',compact('courses'));
     }
 
     /**
@@ -39,7 +41,7 @@ class BatchController extends Controller
         ],
         [
             'name.required' => 'กรุณากรอกชื่อ',
-            'course_id.required' => 'กรุณากรอกคอร์ส ID',
+            'course_id.required' => 'กรุณาเลือก course',
             'start_date.required' => 'กรุณากรอกวันที่เริ่มเรียน'
         ]);
         $validRequest = [
@@ -66,7 +68,8 @@ class BatchController extends Controller
     public function edit(string $id)
     {
         $batch = Batch::find($id);
-        return view('batches.edit')->with('batch', $batch);
+        $courses = Course::pluck('name', 'id');
+        return view('batches.edit',compact('batch'),compact('courses'));
     }
 
     /**

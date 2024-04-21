@@ -6,8 +6,10 @@ use App\Http\Controllers\TeacherController;
 use App\Http\Controllers\CourseController;
 use App\Http\Controllers\BatchController;
 use App\Http\Controllers\EnrollmentController;
+use App\Http\Controllers\PaymentController;
 
-Route::get('/',[StudentController::class,'index'])->name('indexstudents');
+Route::get('/',function() {return view('layout2');});
+// Route::get('/',[StudentController::class,'index'])->name('indexstudents');
 Route::get('/newstudents',[StudentController::class,'create'])->name('createstudents');
 Route::post('/new.students',[StudentController::class,'store'])->name('storestudents');
 Route::get('/showstudent/{id}',[StudentController::class,'show'])->name('showstudents');
@@ -46,3 +48,11 @@ Route::get('/showenrollment/{id}',[EnrollmentController::class,'show'])->name('s
 Route::get('/editenrollment/{id}',[EnrollmentController::class,'edit'])->name('editenrollments');
 Route::post('/updateenrollment/{id}',[EnrollmentController::class,'update'])->name('updateenrollments');
 Route::get('/deleteenrollment/{id}',[EnrollmentController::class,'destroy'])->name('deleteenrollments');
+
+Route::get('/payments',[PaymentController::class,'index'])->name('indexpayments');
+Route::get('/newpayments',[PaymentController::class,'create'])->name('createpayments');
+Route::post('/new.payments',[PaymentController::class,'store'])->name('storepayments');
+Route::get('/showpayment/{id}',[PaymentController::class,'show'])->name('showpayments');
+Route::get('/editpayment/{id}',[PaymentController::class,'edit'])->name('editpayments');
+Route::post('/updatepayment/{id}',[PaymentController::class,'update'])->name('updatepayments');
+Route::get('/updatepayment/{id}',[PaymentController::class,'destroy'])->name('deletepayments');
