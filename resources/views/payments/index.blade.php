@@ -32,6 +32,7 @@
                                             <td><a href="{{route('showpayments',$item->id)}}"class="btn btn-primary">View</a></td>
                                             <td><a href="{{route('editpayments',$item->id)}}"class="btn btn-warning">Edit</a></td>
                                             <td><a href="{{route('deletepayments',$item->id)}}"class="btn btn-danger" onclick="return confirm('Confirm to delete {{$item->name}}?')">Delete</a></td>
+                                            <td><a href="{{route('printreports',$item->id)}}" class="btn btn-success">Print</a></td>
                                         </tr>
                                     @endforeach
                                 </tbody>

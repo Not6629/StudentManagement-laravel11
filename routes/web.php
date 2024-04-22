@@ -7,9 +7,9 @@ use App\Http\Controllers\CourseController;
 use App\Http\Controllers\BatchController;
 use App\Http\Controllers\EnrollmentController;
 use App\Http\Controllers\PaymentController;
+use App\Http\Controllers\ReportController;
 
-Route::get('/',function() {return view('layout2');});
-// Route::get('/',[StudentController::class,'index'])->name('indexstudents');
+Route::get('/',[StudentController::class,'index'])->name('indexstudents');
 Route::get('/newstudents',[StudentController::class,'create'])->name('createstudents');
 Route::post('/new.students',[StudentController::class,'store'])->name('storestudents');
 Route::get('/showstudent/{id}',[StudentController::class,'show'])->name('showstudents');
@@ -56,3 +56,5 @@ Route::get('/showpayment/{id}',[PaymentController::class,'show'])->name('showpay
 Route::get('/editpayment/{id}',[PaymentController::class,'edit'])->name('editpayments');
 Route::post('/updatepayment/{id}',[PaymentController::class,'update'])->name('updatepayments');
 Route::get('/updatepayment/{id}',[PaymentController::class,'destroy'])->name('deletepayments');
+
+Route::get('/print{id}payment',[ReportController::class,'print'])->name('printreports');
