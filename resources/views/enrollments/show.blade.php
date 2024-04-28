@@ -1,15 +1,15 @@
-@extends('layout')
+@extends('layouts.app')
 @section('title','View Enrollment')
 @section('content')
-<div class="card mt-5">
-    <div class="card-headder text-center"><h4><b>View Enrollment Page</b></h4></div>
+<div class="card mb-4">
+    <div class="card-headder text-center"><h4><b>รายละเอียดการลงทะเบียน</b></h4></div>
     <div class="card-body">
         <div class="card-body">
-            <h5 class="card-title">Enroll No : {{$enrollment->enroll_no}}</h5>
-            <p class="card-text">Batch Id: {{$enrollment->batch_id}}</p>
-            <p class="card-text">Student Id: {{$enrollment->student_id}}</p>
-            <p class="card-text">Join Date: {{$enrollment->join_date}}</p>
-            <p class="card-text">Fee cost: {{$enrollment->fee}}</p>
+            <p class="card-text">หมายเลขทะเบียน : {{$enrollment->enroll_no}}</p>
+            <p class="card-text">กลุ่มวิชา : {{$enrollment->batch_id}}</p>
+            <p class="card-text">ชื่อนักเรียน : {{$enrollment->student->name}}</p>
+            <p class="card-text">วันที่เข้าร่วม : {{$enrollment->join_date}}</p>
+            <p class="card-text">ค่าธรรมเนียม : {{$enrollment->feeinbaht()}}</p>
         </div>
     </div>
 </div>

@@ -12,6 +12,12 @@ use Illuminate\View\View;
 
 class EnrollmentController extends Controller
 {
+    
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+
     public function index():View
     {
         $enrollments = Enrollment::all();
@@ -33,6 +39,23 @@ class EnrollmentController extends Controller
      */
     public function store(Request $request)
     {
+        $request->validate([
+            'enroll_no'=>'required',
+            'batch_id'=>'required',
+            'student_id'=>'required',
+            'join_date'=>'required',
+            'fee'=>'required|integer'
+        ],
+        [
+            'enroll_no.required' => 'กรุณากรอกหมายเลขทะเบียนของคุณ',
+            'enroll_no.digits_between:2,5' => 'หมายเลขทะเบียนต้องมีตัวเลขอย่างต่ำ 2 ตัวและไม่เกิน 5 ตัว',
+            'batch_id.required' => 'กรุณาเลือกกลุ่มวิชา',
+            'student_id.required' => 'กรุณาเลือกนักเรียน',
+            'join_date.required' => 'กรุณาเลือกวันที่เข้าร่วม',
+            'fee.required' => 'กรุณาเลือกจำนวนค่าธรรมเนียม',
+            'fee.integer' => 'ค่าธรรมเนียมควรเป็นตัวเลข'
+        ]);
+        
         $validRequest = [
             'enroll_no' => $request->enroll_no,
             'batch_id' => $request->batch_id,
@@ -41,7 +64,7 @@ class EnrollmentController extends Controller
             'fee' => $request->fee
         ];
         Enrollment::create($validRequest);
-        return redirect('/enrollments');
+        return redirect('/enrollments/index');
     }
 
     /**
@@ -91,7 +114,7 @@ class EnrollmentController extends Controller
             'fee' => $request->fee
         ];
         Enrollment::where('id',$id)->update($validRequest);
-        return redirect('/enrollments');
+        return redirect('/enrollments/index');
     }
 
     /**
@@ -100,6 +123,6 @@ class EnrollmentController extends Controller
     public function destroy($id)
     {
         Enrollment::where('id',$id)->delete();
-        return redirect('/enrollments');
+        return redirect('/enrollments/index');
     }
 }

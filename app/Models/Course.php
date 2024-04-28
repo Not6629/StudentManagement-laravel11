@@ -14,6 +14,6 @@ class Course extends Model
 
     public function duration()
     {
-        return $this->duration."weeks";
+        return $this->duration." สัปดาห์ ";
     }
 }

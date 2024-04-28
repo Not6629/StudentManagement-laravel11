@@ -10,6 +10,11 @@ use Illuminate\View\View;
 
 class CourseController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+
     public function index():View
     {
         $courses = Course::all();
@@ -45,7 +50,7 @@ class CourseController extends Controller
             'duration' => $request->duration,
         ];
         Course::create($validRequest);
-        return redirect('/courses');
+        return redirect('/courses/index');
     }
 
     /**
@@ -88,7 +93,7 @@ class CourseController extends Controller
         ];
         Course::where('id',$id)->update($validRequest);
         $course = Course::find($id);
-        return redirect('/courses');
+        return redirect('/courses/index');
     }
 
     /**
@@ -97,6 +102,6 @@ class CourseController extends Controller
     public function destroy($id)
     {
         Course::where('id',$id)->delete();
-        return redirect('/courses');
+        return redirect('/courses/index');
     }
 }

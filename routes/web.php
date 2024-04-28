@@ -1,5 +1,4 @@
 <?php
-
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\StudentController;
 use App\Http\Controllers\TeacherController;
@@ -9,52 +8,84 @@ use App\Http\Controllers\EnrollmentController;
 use App\Http\Controllers\PaymentController;
 use App\Http\Controllers\ReportController;
 
-Route::get('/',[StudentController::class,'index'])->name('indexstudents');
-Route::get('/newstudents',[StudentController::class,'create'])->name('createstudents');
-Route::post('/new.students',[StudentController::class,'store'])->name('storestudents');
-Route::get('/showstudent/{id}',[StudentController::class,'show'])->name('showstudents');
-Route::get('/editstudent/{id}',[StudentController::class,'edit'])->name('editstudents');
-Route::post('/updatestudent/{id}',[StudentController::class,'update'])->name('updatestudents');
-Route::get('/deletestudent/{id}',[StudentController::class,'destroy'])->name('deletestudents');
+//student
+Route::prefix('students')->group(function()
+{
+    Route::get('/index',[StudentController::class,'index'])->name('indexstudents');
+    Route::get('/new',[StudentController::class,'create'])->name('createstudents');
+    Route::post('/new.',[StudentController::class,'store'])->name('storestudents');
+    Route::get('/show/{id}',[StudentController::class,'show'])->name('showstudents');
+    Route::get('/edit/{id}',[StudentController::class,'edit'])->name('editstudents');
+    Route::post('/update/{id}',[StudentController::class,'update'])->name('updatestudents');
+    Route::get('/delete/{id}',[StudentController::class,'destroy'])->name('deletestudents');
+});
 
-Route::get('/teachers',[TeacherController::class,'index'])->name('indexteachers');
-Route::get('/newteachers',[TeacherController::class,'create'])->name('createteachers');
-Route::post('/new.teachers',[TeacherController::class,'store'])->name('storeteachers');
-Route::get('/showteacher/{id}',[TeacherController::class,'show'])->name('showteachers');
-Route::get('/editteacher/{id}',[TeacherController::class,'edit'])->name('editteachers');
-Route::post('/updateteacher/{id}',[TeacherController::class,'update'])->name('updateteachers');
-Route::get('/deleteteacher/{id}',[TeacherController::class,'destroy'])->name('deleteteachers');
+Route::prefix('teachers')->group(function()
+{
+    Route::get('/index',[TeacherController::class,'index'])->name('indexteachers');
+    Route::get('/new',[TeacherController::class,'create'])->name('createteachers');
+    Route::post('/new.',[TeacherController::class,'store'])->name('storeteachers');
+    Route::get('/show/{id}',[TeacherController::class,'show'])->name('showteachers');
+    Route::get('/edit/{id}',[TeacherController::class,'edit'])->name('editteachers');
+    Route::post('/update/{id}',[TeacherController::class,'update'])->name('updateteachers');
+    Route::get('/delete/{id}',[TeacherController::class,'destroy'])->name('deleteteachers');
+});
 
-Route::get('/courses',[CourseController::class,'index'])->name('indexcourses');
-Route::get('/newcourses',[CourseController::class,'create'])->name('createcourses');
-Route::post('/new.courses',[CourseController::class,'store'])->name('storecourses');
-Route::get('/showcourse/{id}',[CourseController::class,'show'])->name('showcourses');
-Route::get('/editcourse/{id}',[CourseController::class,'edit'])->name('editcourses');
-Route::post('/updatecourse/{id}',[CourseController::class,'update'])->name('updatecourses');
-Route::get('/deletecourse/{id}',[CourseController::class,'destroy'])->name('deletecourses');
+Route::prefix('courses')->group(function()
+{
+    Route::get('/index',[courseController::class,'index'])->name('indexcourses');
+    Route::get('/new',[courseController::class,'create'])->name('createcourses');
+    Route::post('/new.',[courseController::class,'store'])->name('storecourses');
+    Route::get('/show/{id}',[courseController::class,'show'])->name('showcourses');
+    Route::get('/edit/{id}',[courseController::class,'edit'])->name('editcourses');
+    Route::post('/update/{id}',[courseController::class,'update'])->name('updatecourses');
+    Route::get('/delete/{id}',[courseController::class,'destroy'])->name('deletecourses');
+});
 
-Route::get('/batches',[BatchController::class,'index'])->name('indexbatches');
-Route::get('/newbatches',[BatchController::class,'create'])->name('createbatches');
-Route::post('/new.batches',[BatchController::class,'store'])->name('storebatches');
-Route::get('/showbatch/{id}',[BatchController::class,'show'])->name('showbatches');
-Route::get('/editbatch/{id}',[BatchController::class,'edit'])->name('editbatches');
-Route::post('/updatebatch/{id}',[BatchController::class,'update'])->name('updatebatches');
-Route::get('/deletebatch/{id}',[BatchController::class,'destroy'])->name('deletebatches');
+Route::prefix('batches')->group(function()
+{
+    Route::get('/index',[batchController::class,'index'])->name('indexbatches');
+    Route::get('/new',[batchController::class,'create'])->name('createbatches');
+    Route::post('/new.',[batchController::class,'store'])->name('storebatches');
+    Route::get('/show/{id}',[batchController::class,'show'])->name('showbatches');
+    Route::get('/edit/{id}',[batchController::class,'edit'])->name('editbatches');
+    Route::post('/update/{id}',[batchController::class,'update'])->name('updatebatches');
+    Route::get('/delete/{id}',[batchController::class,'destroy'])->name('deletebatches');
+});
 
-Route::get('/enrollments',[EnrollmentController::class,'index'])->name('indexenrollments');
-Route::get('/newenrollments',[EnrollmentController::class,'create'])->name('createenrollments');
-Route::post('/new.enrollments',[EnrollmentController::class,'store'])->name('storeenrollments');
-Route::get('/showenrollment/{id}',[EnrollmentController::class,'show'])->name('showenrollments');
-Route::get('/editenrollment/{id}',[EnrollmentController::class,'edit'])->name('editenrollments');
-Route::post('/updateenrollment/{id}',[EnrollmentController::class,'update'])->name('updateenrollments');
-Route::get('/deleteenrollment/{id}',[EnrollmentController::class,'destroy'])->name('deleteenrollments');
+Route::prefix('enrollments')->group(function()
+{
+    Route::get('/index',[enrollmentController::class,'index'])->name('indexenrollments');
+    Route::get('/new',[enrollmentController::class,'create'])->name('createenrollments');
+    Route::post('/new.',[enrollmentController::class,'store'])->name('storeenrollments');
+    Route::get('/show/{id}',[enrollmentController::class,'show'])->name('showenrollments');
+    Route::get('/edit/{id}',[enrollmentController::class,'edit'])->name('editenrollments');
+    Route::post('/update/{id}',[enrollmentController::class,'update'])->name('updateenrollments');
+    Route::get('/delete/{id}',[enrollmentController::class,'destroy'])->name('deleteenrollments');
+});
 
-Route::get('/payments',[PaymentController::class,'index'])->name('indexpayments');
-Route::get('/newpayments',[PaymentController::class,'create'])->name('createpayments');
-Route::post('/new.payments',[PaymentController::class,'store'])->name('storepayments');
-Route::get('/showpayment/{id}',[PaymentController::class,'show'])->name('showpayments');
-Route::get('/editpayment/{id}',[PaymentController::class,'edit'])->name('editpayments');
-Route::post('/updatepayment/{id}',[PaymentController::class,'update'])->name('updatepayments');
-Route::get('/updatepayment/{id}',[PaymentController::class,'destroy'])->name('deletepayments');
+Route::prefix('payments')->group(function()
+{
+    Route::get('/index',[paymentController::class,'index'])->name('indexpayments');
+    Route::get('/new',[paymentController::class,'create'])->name('createpayments');
+    Route::post('/new.',[paymentController::class,'store'])->name('storepayments');
+    Route::get('/show/{id}',[paymentController::class,'show'])->name('showpayments');
+    Route::get('/edit/{id}',[paymentController::class,'edit'])->name('editpayments');
+    Route::post('/update/{id}',[paymentController::class,'update'])->name('updatepayments');
+    Route::get('/delete/{id}',[paymentController::class,'destroy'])->name('deletepayments');
+    Route::get('/print{id}payment',[ReportController::class,'print'])->name('printreports');
+});
 
-Route::get('/print{id}payment',[ReportController::class,'print'])->name('printreports');
+Route::fallback(function(){
+    return view('error');
+});
+
+Auth::routes();
+Route::get('/', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
+Route::middleware('auth')->group(function () {
+    Route::view('about', 'about')->name('about');
+    Route::get('users', [\App\Http\Controllers\UserController::class, 'index'])->name('users.index');
+    Route::get('profile', [\App\Http\Controllers\ProfileController::class, 'show'])->name('profile.show');
+    Route::put('profile', [\App\Http\Controllers\ProfileController::class, 'update'])->name('profile.update');
+});

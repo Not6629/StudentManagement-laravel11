@@ -12,6 +12,12 @@ class StudentController extends Controller
     /**
      * Display a listing of the resource.
      */
+
+     public function __construct()
+    {
+        $this->middleware('auth');
+    }
+
     public function index():View
     {
         $students = Student::all();
@@ -48,7 +54,7 @@ class StudentController extends Controller
             'mobile' => $request->mobile,
         ];
         Student::create($validRequest);
-        return redirect('/');
+        return redirect('/students/index');
     }
 
     /**
@@ -92,7 +98,7 @@ class StudentController extends Controller
         ];
         Student::where('id',$id)->update($validRequest);
         $student = Student::find($id);
-        return redirect('/');
+        return redirect('/students/index');
     }
 
     /**
@@ -101,6 +107,6 @@ class StudentController extends Controller
     public function destroy($id)
     {
         Student::where('id',$id)->delete();
-        return redirect('/');
+        return redirect('/students/index');
     }
 }

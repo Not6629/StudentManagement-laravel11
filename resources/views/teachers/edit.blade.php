@@ -1,9 +1,9 @@
-@extends('layout')
+@extends('layouts.app')
 @section('title', 'Edit teacher')
 @section('content')
-    <div class="container">
-        <div class="card mt-5">
-            <div class="card-header">Teacher Edit Page</div>
+
+        <div class="card mb-4">
+            <div class="card-header">แก้ไขข้อมูลอาจารย์</div>
             <div class="card-body">
                 <form class="form-horizontal" action="{{route('updateteachers',$teacher->id)}}" method="POST">
                     @csrf
@@ -32,5 +32,5 @@
                 </form>
             </div>
         </div>
-    </div>
+
 @endsection

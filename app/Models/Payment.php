@@ -16,4 +16,8 @@ class Payment extends Model
         return $this->belongsTo(Enrollment::class);
     }
 
+    public function amountinbaht()
+    {
+        return $this->amount." บาท ";
+    }
 }

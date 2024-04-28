@@ -8,6 +8,12 @@ use Auth;
 
 class ReportController extends Controller
 {
+    
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+
     public function print($pid){
     $payment = Payment::find($pid);
     $pdf = App::make('dompdf.wrapper');
@@ -25,7 +31,7 @@ class ReportController extends Controller
     $print.="<td>Amount</td>";
     $print.="</tr>";
     $print.="<td> <h3>" . $payment->enrollment->batch->name . "</h3></td>";
-    $print.="<td> <h3>" . $payment->amount . "</h3></td>";
+    $print.="<td> <h3>" . $payment->amount . " Baht "."</h3></td>";
     $print.="</tr>";
     $print.="</table>";
     $print.="<hr/>";

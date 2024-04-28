@@ -1,13 +1,15 @@
-@extends('layout')
+@extends('layouts.app')
 @section('title','View Student')
 @section('content')
-<div class="card mt-5">
-    <div class="card-headder text-center"><h4><b>Student View Page</b></h4></div>
+<div class="card mb-4">
+    <div class="card-headder text-center"><h4><b>รายละเอียดนักเรียน</b></h4></div>
     <div class="card-body">
         <div class="card-body">
-            <h5 class="card-title">Name : {{$student->name}}</h5>
-            <p class="card-text">address: {{$student->address}}</p>
-            <p class="card-text">mobile: {{$student->mobile}}</p>
+            <table class="table mt-3">
+            <p class="card-text">ชื่อนักเรียน : {{$student->name}}</p>
+            <p class="card-text">ที่อยู่ : {{$student->address}}</p>
+            <p class="card-text">เบอร์โทรศัพท์มือถือ : {{$student->mobile}}</p>
+            </table>
         </div>
     </div>
 </div>

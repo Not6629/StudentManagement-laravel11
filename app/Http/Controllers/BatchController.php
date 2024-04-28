@@ -14,6 +14,11 @@ class BatchController extends Controller
     /**
      * Display a listing of the resource.
      */
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+    
     public function index():View
     {
         $batches = Batch::all();
@@ -50,7 +55,7 @@ class BatchController extends Controller
             'start_date' => $request->start_date,
         ];
         Batch::create($validRequest);
-        return redirect('/batches');
+        return redirect('/batches/index');
     }
 
     /**
@@ -94,7 +99,7 @@ class BatchController extends Controller
         ];
         Batch::where('id',$id)->update($validRequest);
         $batch = Batch::find($id);
-        return redirect('/batches');
+        return redirect('/batches/index');
     }
 
     /**
@@ -103,6 +108,7 @@ class BatchController extends Controller
     public function destroy($id)
     {
         Batch::where('id',$id)->delete();
-        return redirect('/batches');
+        return redirect('/batches/index');
     }
+
 }

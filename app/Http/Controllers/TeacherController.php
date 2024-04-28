@@ -10,6 +10,12 @@ use Illuminate\View\View;
 
 class TeacherController extends Controller
 {
+
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+
     public function index():View
     {
         $teachers = teacher::all();
@@ -46,7 +52,7 @@ class TeacherController extends Controller
             'mobile' => $request->mobile,
         ];
         teacher::create($validRequest);
-        return redirect('/teachers');
+        return redirect('/teachers/index');
     }
 
     /**
@@ -90,7 +96,7 @@ class TeacherController extends Controller
         ];
         teacher::where('id',$id)->update($validRequest);
         $teacher = teacher::find($id);
-        return redirect('/teachers');
+        return redirect('/teachers/index');
     }
 
     /**
@@ -99,6 +105,6 @@ class TeacherController extends Controller
     public function destroy($id)
     {
         teacher::where('id',$id)->delete();
-        return redirect('/teachers');
+        return redirect('/teachers/index');
     }
 }

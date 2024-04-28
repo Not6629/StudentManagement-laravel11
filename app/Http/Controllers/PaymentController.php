@@ -11,6 +11,11 @@ use Illuminate\View\View;
 
 class PaymentController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+
     public function index()
     {
         $payments = Payment::all();
@@ -25,13 +30,24 @@ class PaymentController extends Controller
 
     public function store(Request $request)
     {
+        $request->validate([
+            'enrollment_id'=>'required',
+            'paid_date'=>'required',
+            'amount'=>'required|min:10',
+        ],
+        [
+            'enrollment_id.required' => 'กรุณาเลือกทะเบียนของคุณ',
+            'paid_date.required' => 'กรุณาเลือกวันที่ชำระ',
+            'amount.required' => 'กรุณากรอกจำนวนเงินที่ชำระ',
+        ]);
+
         $validRequest = [
             'enrollment_id' => $request->enrollment_id,
             'paid_date' => $request->paid_date,
             'amount' => $request->amount
         ];
         Payment::create($validRequest);
-        return redirect('/payments');
+        return redirect('/payments/index');
     }
 
     public function show($id)
@@ -49,6 +65,17 @@ class PaymentController extends Controller
 
     public function update(Request $request,$id): RedirectResponse
     {
+        $request->validate([
+            'enrollment_id'=>'required',
+            'paid_date'=>'required',
+            'amount'=>'required',
+        ],
+        [
+            'enrollment_id.required' => 'กรุณาเลือกหมายเลขทะเบียนของคุณ',
+            'paid_date.required' => 'กรุณาเลือกวันที่ชำระ',
+            'amount.required' => 'กรุณากรอกจำนวนเงินที่ชำระ',
+        ]);
+
         $validRequest = [
             'enrollment_id' => $request->enrollment_id,
             'paid_date' => $request->paid_date,
@@ -56,12 +83,12 @@ class PaymentController extends Controller
         ];
         Payment::where('id',$id)->update($validRequest);
         $payments = Payment::find($id);
-        return redirect('/payments');
+        return redirect('/payments/index');
     }
 
     public function destroy($id)
     {
         Payment::where('id',$id)->delete();
-        return redirect('/payments');
+        return redirect('/payments/index');
     }
 }
