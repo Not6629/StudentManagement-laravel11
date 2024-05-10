@@ -15,6 +15,8 @@
                 @if ($message = Session::get('success'))
                     <div class="alert alert-success" role="alert">{{ $message }}</div>
                 @endif
+                <div class="input-group mb-3">Your role is : {{auth()->user()->role}}
+                </div>
 
                 <div class="input-group mb-3"><span class="input-group-text">
                     <svg class="icon">

@@ -6,11 +6,13 @@
             <h2>ระบบจัดการนักเรียน</h2>
         </div>
         <div class="card-body">
+            @can('Is_Admin')
             <a href="{{ route('createstudents') }}" class="btn btn-success btn-sm" title="Add new student">
                 <i class="fa fa-plus" aria-hidden="true"></i> เพิ่มนักเรียนใหม่
             </a>
+            @endcan
             <div class="table-reponsive">
-                <table class="table mt-3">
+                <table class="table mt-2">
                     <thead>
                         <tr>
                             <th>#</th>
@@ -28,9 +30,11 @@
                                 <td>{{ Str::limit($item->address, 10) }}</td>
                                 <td>{{ $item->mobile }}</td>
                                 <td><a href="{{ route('showstudents', $item->id) }}"class="btn btn-primary">ดู</a>
+                                    @can('Is_Admin')
                                     <a href="{{ route('editstudents', $item->id) }}"class="btn btn-warning">แก้ไช</a>
                                     <a href="{{ route('deletestudents', $item->id) }}"class="btn btn-danger"
                                         onclick="return confirm('Confirm to delete {{ $item->name }}?')">ลบ</a>
+                                    @endcan
                                 </td>
                             </tr>
                         @endforeach

@@ -11,7 +11,7 @@
                             <i class="fa fa-plus" aria-hidden="true"></i> เพิ่มการชำระเงินใหม่
                         </a>
                         <div class="table-reponsive">
-                            <table class="table mt-3">
+                            <table class="table mt-2">
                                 <thead>
                                     <tr>
                                         <th>#</th>
@@ -29,8 +29,10 @@
                                             <td>{{$item->paid_date}}</td>
                                             <td>{{$item->amountinbaht()}}</td>
                                             <td><a href="{{route('showpayments',$item->id)}}"class="btn btn-primary">ดู</a>
+                                            @can('Is_Admin')
                                             <a href="{{route('editpayments',$item->id)}}"class="btn btn-warning">แก้ไข</a>
                                             <a href="{{route('deletepayments',$item->id)}}"class="btn btn-danger" onclick="return confirm('Confirm to delete {{$item->name}}?')">ลบ</a>
+                                            @endcan
                                             <a href="{{route('printreports',$item->id)}}" class="btn btn-success">ปริ้น</a></td>
                                         </tr>
                                     @endforeach

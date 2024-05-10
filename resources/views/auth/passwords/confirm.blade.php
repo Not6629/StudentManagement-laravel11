@@ -25,9 +25,9 @@
                         <div class="col-6">
                             <button class="btn btn-primary px-4" type="submit">{{ __('Confirm Password') }}</button>
                         </div>
-                        @if (Route::has('password.request'))
+                        @if (Route::has('password.reset'))
                             <div class="col-6 text-end">
-                                <a href="{{ route('password.request') }}" class="btn btn-link px-0"
+                                <a href="{{ route('password.reset') }}" class="btn btn-link px-0"
                                    type="button">{{ __('Forgot Your Password?') }}</a>
                             </div>
                         @endif

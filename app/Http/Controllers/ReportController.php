@@ -3,7 +3,6 @@
 namespace App\Http\Controllers;
 use App\Models\Payment;
 use App;
-use Auth;
 
 
 class ReportController extends Controller

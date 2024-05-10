@@ -6,11 +6,13 @@
                         <h2>ระบบจัดการกลุ่มวิชา</h2>
                     </div>
                     <div class="card-body">
+                        @can('Is_Admin')
                         <a href="{{route('createbatches')}}" class="btn btn-success btn-sm" title="Add new Batch">
                             <i class="fa fa-plus" aria-hidden="true"></i> เพิ่มกลุ่มวิชาใหม่
                         </a>
+                        @endcan
                         <div class="table-reponsive">
-                            <table class="table mt-3">
+                            <table class="table mt-2">
                                 <thead>
                                     <tr>
                                         <th>#</th>
@@ -28,8 +30,11 @@
                                             <td>{{$item->course->name}}</td>
                                             <td>{{$item->start_date}}</td>
                                             <td><a href="{{route('showbatches',$item->id)}}"class="btn btn-primary">ดู</a>
+                                            @can('Is_Admin')
                                             <a href="{{route('editbatches',$item->id)}}"class="btn btn-warning">แก้ไข</a>
-                                            <a href="{{route('deletebatches',$item->id)}}"class="btn btn-danger" onclick="return confirm('Confirm to delete {{$item->name}}?')">ลบ</a></td>
+                                            <a href="{{route('deletebatches',$item->id)}}"class="btn btn-danger" 
+                                                onclick="return confirm('Confirm to delete {{$item->name}}?')">ลบ</a></td>
+                                            @endcan
                                         </tr>
                                     @endforeach
                                 </tbody>

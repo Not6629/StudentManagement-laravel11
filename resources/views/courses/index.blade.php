@@ -7,11 +7,13 @@
                         <h2>ระบบจัดการคอร์ส</h2>
                     </div>
                     <div class="card-body">
+                        @can('Is_Admin')
                         <a href="{{route('createcourses')}}" class="btn btn-success btn-sm" title="Add new course">
                             <i class="fa fa-plus" aria-hidden="true"></i> เพิ่มคอร์สใหม่
                         </a>
+                        @endcan
                         <div class="table-reponsive">
-                            <table class="table mt-3">
+                            <table class="table mt-2">
                                 <thead>
                                     <tr>
                                         <th>#</th>
@@ -29,8 +31,12 @@
                                             <td>{{$item->syllabus}}</td>
                                             <td>{{$item->duration()}}</td>
                                             <td><a href="{{route('showcourses',$item->id)}}"class="btn btn-primary">ดู</a>
+                                            @can('Is_Admin')
                                             <a href="{{route('editcourses',$item->id)}}"class="btn btn-warning">แก้ไข</a>
-                                            <a href="{{route('deletecourses',$item->id)}}"class="btn btn-danger" onclick="return confirm('Confirm to delete {{$item->name}}?')">ลบ</a></td>
+                                            <a href="{{route('deletecourses',$item->id)}}"class="btn btn-danger" 
+                                                onclick="return confirm('Confirm to delete {{$item->name}}?')">ลบ</a>
+                                            @endcan
+                                            </td>
                                         </tr>
                                     @endforeach
                                 </tbody>

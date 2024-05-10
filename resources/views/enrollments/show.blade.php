@@ -2,7 +2,7 @@
 @section('title','View Enrollment')
 @section('content')
 <div class="card mb-4">
-    <div class="card-headder text-center"><h4><b>รายละเอียดการลงทะเบียน</b></h4></div>
+    <div class="card-header text-center"><h4><b>รายละเอียดการลงทะเบียน</b></h4></div>
     <div class="card-body">
         <div class="card-body">
             <p class="card-text">หมายเลขทะเบียน : {{$enrollment->enroll_no}}</p>
